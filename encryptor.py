@@ -23,11 +23,24 @@ flags = [
 
 # -------------------------- Bloque de funciones ------------------------
 
-def test(x):
-    if x == 2:
-        print("Perfecto, lo tienes!!")
+def encrypt(x):
+    print
 
-# -------------------------- Bloque de Codigo ---------------------------
+def decrypt(x):
+    dicc_par = {}
+    x_first = x.split("*")
+    c = 0
+
+    for i in x_first:
+        partes = i.split("^")
+        c += 1
+        
+        base = int(partes[0])
+        exponente = int(partes[1])
+        ter = f'termino_{c}'
+
+        dicc_par[ter] = {"base": base, "exponente": exponente}
+#----------------------- Bloque de Codigo ---------------------------
 
 try:
     if len(sys.argv) < 2:
@@ -37,14 +50,17 @@ try:
         if sys.argv[1] == "--help":
             print(header)
             sys.exit(help)
-        elif sys.argv[1] == "--encrypt": print("funciona!!")
+        elif sys.argv[1] == "--encrypt": 
+            num = int(sys.argv[2])
+            if isinstance(num, int):
+                encrypt(num)
+            else: raise IndexError;
         elif sys.argv[1] == "--decrypt":
             if sys.argv[2]:
-                test_str = sys.argv[2]
-                test_int = int(test_str)
-                test(test_int)
+                num_prim = sys.argv[2]
+                decrypt(num_prim)
 
     else: sys.exit("Para mas informacion de los comandos usa la flag --help")
 
-except ValueError:
-    sys.exit()
+except (ValueError, IndexError):
+    sys.exit("Para mas informacion de los comandos usa la flag --help")
