@@ -24,9 +24,27 @@ flags = [
 # -------------------------- Bloque de funciones ------------------------
 
 def encrypt(x):
-    print
+    if x % 2 == 0:
+        x /= 2
+        if x % 2 == 0:
+            x /= 2
+            
 
 def decrypt(x):
+    diccionario_terminos = decrypt_par(x)
+    resultado_total = 1
+    # ejemplo de como acceder a los del diccionario ----> datos = diccionario_terminos['termino_1']['base']
+    for i in diccionario_terminos:
+        base = diccionario_terminos[i]['base']
+        exponente = diccionario_terminos[i]['exponente']
+
+        resultado = base ** exponente
+        resultado_total *= resultado
+    return resultado_total
+
+
+
+def decrypt_par(x):
     dicc_par = {}
     x_first = x.split("*")
     c = 0
@@ -40,6 +58,8 @@ def decrypt(x):
         ter = f'termino_{c}'
 
         dicc_par[ter] = {"base": base, "exponente": exponente}
+    
+    return dicc_par
 #----------------------- Bloque de Codigo ---------------------------
 
 try:
@@ -58,7 +78,8 @@ try:
         elif sys.argv[1] == "--decrypt":
             if sys.argv[2]:
                 num_prim = sys.argv[2]
-                decrypt(num_prim)
+                result = decrypt(num_prim)
+                print(f'La desenciptacion de la cadena de primos es: {result}')
 
     else: sys.exit("Para mas informacion de los comandos usa la flag --help")
 
