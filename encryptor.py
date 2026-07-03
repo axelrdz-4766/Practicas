@@ -86,12 +86,12 @@ try:
             sys.exit(help)
         elif sys.argv[1] == "--encrypt": 
             num = int(sys.argv[2])
-            if isinstance(num, int):
+            if num > 1:
                 cry = encrypt(num)
                 print(cry)
             else: raise IndexError
         elif sys.argv[1] == "--decrypt":
-            if sys.argv[2]:
+            if len(sys.argv) >= 2:
                 num_prim = sys.argv[2]
                 result = decrypt(num_prim)
                 print(f'La desenciptacion de la cadena de primos es: {result}')
