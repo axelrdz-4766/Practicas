@@ -91,10 +91,11 @@ try:
                 print(cry)
             else: raise IndexError
         elif sys.argv[1] == "--decrypt":
-            if len(sys.argv) >= 2:
+            if len(sys.argv) > 2:
                 num_prim = sys.argv[2]
                 result = decrypt(num_prim)
                 print(f'La desenciptacion de la cadena de primos es: {result}')
+            else: sys.exit("Para mas informacion de los comandos usa la flag --help")
 
     else: sys.exit("Para mas informacion de los comandos usa la flag --help")
 
