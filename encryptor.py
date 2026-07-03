@@ -24,11 +24,27 @@ flags = [
 # -------------------------- Bloque de funciones ------------------------
 
 def encrypt(x):
-    if x % 2 == 0:
-        x /= 2
-        if x % 2 == 0:
-            x /= 2
-            
+    factores = {}
+    divisor = 2
+    
+    while x != 1:
+        if x % divisor == 0:
+            x //= divisor
+
+            if divisor in factores: factores[divisor] += 1 
+            else: factores[divisor] = 1
+
+        else: divisor += 1
+    
+    lista_terminos = []
+
+    for base, exponente in factores.items():
+        lista_terminos.append(f'{base}^{exponente}')
+    
+    cry = " * ".join(lista_terminos)
+
+    return cry
+
 
 def decrypt(x):
     diccionario_terminos = decrypt_par(x)
@@ -41,8 +57,6 @@ def decrypt(x):
         resultado = base ** exponente
         resultado_total *= resultado
     return resultado_total
-
-
 
 def decrypt_par(x):
     dicc_par = {}
@@ -73,8 +87,9 @@ try:
         elif sys.argv[1] == "--encrypt": 
             num = int(sys.argv[2])
             if isinstance(num, int):
-                encrypt(num)
-            else: raise IndexError;
+                cry = encrypt(num)
+                print(cry)
+            else: raise IndexError
         elif sys.argv[1] == "--decrypt":
             if sys.argv[2]:
                 num_prim = sys.argv[2]
