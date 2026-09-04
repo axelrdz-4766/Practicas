@@ -1,0 +1,9 @@
+Mission 00: Hipotesis y explicacion sobre una funcion vs un objeto
+
+Una funcion es parte de un bloque de codigo para hacer una accion espesifica, ya sea sumar, restar, eliminar, agregar o parsear datos, las funciones manejan con una simple entrada y salida, no hay un manejo interno de datos al igual que con los objetos.
+Con los objetos podemos usar la identidad del objeto para modificar su estado y asi tener un comportamiento del objeto dependiendo para el uso que necesitamos, cosa que las funciones son muy limitadas en ese aspecto.
+Podemos usar la identidad de un objeto con funciones dentro de ella para obteener un comportamiento, los objetos no remplazan las funciones si no, son una extension de ellas, una forma de trabajar con datos.
+
+Despues de varias hipotesis y pensar en tratar de comprender POO que era la idea inicial de la Mision 00, la tengo, en si POO no es como tal una forma bonita de programar o algo asi, aunque si, su disenio fue echo para que se pueda leer y escribir de manera natural como si fuera una oracion como usuario.cumplir_anios() suena natural a decir cumplir_anios(usuario), la principal diferencia entre POO y las funciones es la RESPONSABILIDAD, que responsabilidades tiene en si las cosas.
+Con el objeto le damos su responsabilidad, conocer su propio estado y que sepa como actuar sobre el y ya con python simplemente coordinamos los objetos que tenemos, lo supe cuando recorde como aprendi regex, la separacion de responsabilidades.
+
