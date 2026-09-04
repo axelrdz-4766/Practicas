@@ -1,0 +1,26 @@
+En esta mision es mas sobre el trabajo del disenio en un acontecimiento espesifico.
+
+Situacion: Un programador nuevo del equipo escribe:
+account = Account("Axel", 100)
+account.money = -50000
+
+Problema: la cuenta ahora tiene $-50,000.00
+
+Pregunta 1.- Porque si el contructor protegia el estado... cualquiera puede romperlo?
+R: Noto que cualquiera puede romperla por problemas de
+memoslo "permisos" no hay una forma en que se valide quien modifica a quien o cuando, por eso se puede modificar de menera directa aunque no se este ejecutando alguna accion o por algun usuario cualquiera.
+
+2.- Que responsabilidad estamos regalando al usuario de la clase?
+R: Estamos regalando la responsabilidad de modificacion a los estados del objeto, cosa que, al testearlo, eso no deberia de suceder
+
+3.- Quien deberia de ser el unico autorizado para modificar el saldo?
+R: El unico que deberia de poder modificar el estado de los atributos deberia de ser los mismos metodos de la clase, porque de todos modos si hacemos que las modificaciones se ejecuten solo porque si sin necesitar de un evento para ejercerce, podria un atacante descubir una forma de aprovechar eso para beneficio propio
+
+4.- Imaginemos una API bancaria. Que pasaria si cualquier parte del codigo pudiera hacer:
+account.money = cualquier_cosa
+R: Le estariamos otrgando al usuario la capacidad de bypass de validaciones y escalada de privilegios logica
+
+5.- Generar una Hipotesis de solucion sin buscar la respuesta primero razonamiento
+R: Lo que debemos de hacer es manejar, lo dire en palabras de pentest. los permisos, que no cualquiera pueda modificar los estados sin eventos de por medio, que solo ciertas acciones modifiquen x cosas, tampoco podemos hacer que se pueda modificar el dinero con el metodo de mostrar informacion, debemos de aislar las responsabilidades.
+
+"Encapsular es decidir como se comportan los datos del objeto"
